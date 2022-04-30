@@ -21,7 +21,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/thumbnail"
+                android:id="@+id/imagem"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="0dp"
@@ -43,7 +43,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/thumbnail">
+                app:layout_constraintTop_toBottomOf="@id/imagem">
 
                 <TextView
                     android:id="@+id/nome"
