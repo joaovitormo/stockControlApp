@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.res_item_product.view.*
 import java.text.NumberFormat
 
 
-class ProductAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ProductAdapter(private val onItemClicked : (Product) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var items : List<Product> = ArrayList()
 
@@ -26,7 +26,7 @@ class ProductAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         when(holder){
             is ProductViewHolder -> {
-                holder.bind(items[position])
+                holder.bind(items[position], onItemClicked)
             }
         }
 
@@ -51,7 +51,7 @@ class ProductAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
         /*Recebe o objeto, e transforma para mostrar na view*/
-        fun bind(product: Product){
+        fun bind(product: Product, onItemClicked: (Product) -> Unit){
             nomeProduct.text = product.nome
             valorProduct.text = product.valor.toString()
 
@@ -63,6 +63,10 @@ class ProductAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 .applyDefaultRequestOptions(requestOptions)
                 .load(product.foto)
                 .into(imagemProduct)
+
+            itemView.setOnClickListener{
+                onItemClicked(product)
+            }
         }
 
     }
